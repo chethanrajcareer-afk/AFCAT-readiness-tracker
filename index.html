@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFCAT Readiness Tracker</title>
+
+<link rel="stylesheet" href="./AFCAT.CSS">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h1>AFCAT Tracker</h1>
+
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#eligibility">Eligibility</a></li>
+            <li><a href="#progress">Progress</a></li>
+            <li><a href="#fitness">Fitness</a></li>
+            <li><a href="#location">Location</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="hero">
+    <h2>AFCAT Readiness Tracker</h2>
+
+    <p>
+        Track your preparation, fitness and eligibility
+        for the AFCAT exam.
+    </p>
+
+    <button id="openModalBtn">
+        Start Tracking
+    </button>
+</section>
+
+<section id="eligibility">
+
+    <h2>Eligibility Checker</h2>
+
+    <label>Age:</label>
+    <input type="number" id="age">
+
+    <br><br>
+
+    <label>Height (cm):</label>
+    <input type="number" id="height">
+
+    <br><br>
+
+    <label>Degree:</label>
+
+    <select id="degree">
+        <option>BCA</option>
+        <option>BBA</option>
+        <option>Engineering</option>
+        <option>MCA</option>
+        <option>MBA</option>
+        <option>Other Degree</option>
+    </select>
+
+    <br><br>
+
+    <button id="checkBtn">
+        Check Eligibility
+    </button>
+
+    <p id="result"></p>
+
+</section>
+
+<section id="progress">
+
+    <h2>Study Progress Tracker</h2>
+
+    <div class="grid-container">
+
+        <div class="subject">
+            <h3>Maths</h3>
+            <input type="number" id="maths">
+        </div>
+
+        <div class="subject">
+            <h3>English</h3>
+            <input type="number" id="english">
+        </div>
+
+        <div class="subject">
+            <h3>Reasoning</h3>
+            <input type="number" id="reasoning">
+        </div>
+
+        <div class="subject">
+            <h3>General Knowledge</h3>
+            <input type="number" id="gk">
+        </div>
+
+    </div>
+
+    <button id="progressBtn">
+        Calculate Readiness
+    </button>
+
+    <p id="progressResult"></p>
+
+</section>
+
+<section id="fitness">
+
+    <h2>Fitness Tracker</h2>
+
+    <div class="fitness-container">
+
+        <div class="fitness-card">
+            <h3>Pushups</h3>
+            <input type="number" id="pushups">
+        </div>
+
+        <div class="fitness-card">
+            <h3>Running Distance (km)</h3>
+            <input type="number" id="running">
+        </div>
+
+        <div class="fitness-card">
+            <h3>BMI</h3>
+            <input type="number" id="bmi">
+        </div>
+
+    </div>
+
+    <button id="fitnessBtn">
+        Check Fitness
+    </button>
+
+    <p id="fitnessResult"></p>
+
+</section>
+
+<section id="location">
+
+    <h2>Nearest Air Force Station Finder</h2>
+
+    <p>
+        Click below to get your current location.
+    </p>
+
+    <button id="locationBtn">
+        Find My Location
+    </button>
+
+    <p id="locationResult"></p>
+
+</section>
+
+<footer>
+    <p>
+        © 2026 AFCAT Readiness Tracker
+    </p>
+</footer>
+
+<div id="assessmentModal" class="modal">
+
+    <div class="modal-content">
+
+        <span id="closeModalBtn">&times;</span>
+
+        <h2>AFCAT Readiness Assessment</h2>
+
+        <label>Mock Score</label>
+        <input type="number" id="mockScore">
+
+        <br><br>
+
+        <label>Study Hours Per Day</label>
+        <input type="number" id="studyHours">
+
+        <br><br>
+
+        <label>Fitness Score</label>
+        <input type="number" id="fitnessScore">
+
+        <br><br>
+
+        <button id="calculateBtn">
+            Calculate Readiness
+        </button>
+
+        <p id="assessmentResult"></p>
+
+    </div>
+
+</div>
+
+<script>
+
+document.getElementById("checkBtn")
+.addEventListener("click", function(){
+
+    let age =
+    document.getElementById("age").value;
+
+    let height =
+    document.getElementById("height").value;
+
+    if(age >= 20 && age <= 26 && height >= 157)
+    {
+        document.getElementById("result").innerHTML =
+        "Eligible for AFCAT";
+    }
+    else
+    {
+        document.getElementById("result").innerHTML =
+        "Not Eligible for AFCAT";
+    }
+
+});
+
+document.getElementById("progressBtn")
+.addEventListener("click", function(){
+
+    let maths =
+    parseInt(document.getElementById("maths").value);
+
+    let english =
+    parseInt(document.getElementById("english").value);
+
+    let reasoning =
+    parseInt(document.getElementById("reasoning").value);
+
+    let gk =
+    parseInt(document.getElementById("gk").value);
+
+    let average =
+    (maths + english + reasoning + gk) / 4;
+
+    document.getElementById("progressResult").innerHTML =
+    "Overall Readiness Score: " + average.toFixed(1);
+
+});
+
+document.getElementById("fitnessBtn")
+.addEventListener("click", function(){
+
+    let pushups =
+    parseInt(document.getElementById("pushups").value);
+
+    let running =
+    parseInt(document.getElementById("running").value);
+
+    let bmi =
+    parseInt(document.getElementById("bmi").value);
+
+    if(pushups >= 30 &&
+       running >= 3 &&
+       bmi >= 18 &&
+       bmi <= 25)
+    {
+        document.getElementById("fitnessResult").innerHTML =
+        "Fit For AFCAT Preparation";
+    }
+    else
+    {
+        document.getElementById("fitnessResult").innerHTML =
+        "Needs More Training";
+    }
+
+});
+
+document.getElementById("locationBtn")
+.addEventListener("click", function(){
+
+    if(navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(
+            function(position){
+
+                document.getElementById("locationResult")
+                .innerHTML =
+                "Latitude: " +
+                position.coords.latitude +
+                "<br>Longitude: " +
+                position.coords.longitude;
+
+            }
+        );
+    }
+
+});
+
+document.getElementById("openModalBtn")
+.addEventListener("click", function(){
+
+    document.getElementById("assessmentModal")
+    .style.display = "block";
+
+});
+
+document.getElementById("closeModalBtn")
+.addEventListener("click", function(){
+
+    document.getElementById("assessmentModal")
+    .style.display = "none";
+
+});
+
+document.getElementById("calculateBtn")
+.addEventListener("click", function(){
+
+    let mock =
+    parseInt(document.getElementById("mockScore").value);
+
+    let study =
+    parseInt(document.getElementById("studyHours").value);
+
+    let fitness =
+    parseInt(document.getElementById("fitnessScore").value);
+
+    let readiness =
+    (mock + fitness + (study * 10)) / 3;
+
+    document.getElementById("assessmentResult")
+    .innerHTML =
+    "AFCAT Readiness Score: "
+    + readiness.toFixed(1) + "%";
+
+});
+
+</script>
+
+</body>
+</html>
+

@@ -140,6 +140,7 @@ button:hover{
     gap:20px;
     flex-wrap:wrap;
     margin-bottom:20px;
+    text-align: center;
 }
 
 .fitness-card{
@@ -235,4 +236,3 @@ footer{
         width:90%;
     }
 }
-
